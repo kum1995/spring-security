@@ -12,26 +12,20 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
-@EnableWebSecurity
-@EnableGlobalMethodSecurity(securedEnabled = true,prePostEnabled = true)
+
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
-	@Autowired
-	private UserDetailsService userDetailsService;
-	
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		
-		auth.userDetailsService(userDetailsService);
-	}
+
 	
 	
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-	http.csrf().disable();
-	http.authorizeHttpRequests().antMatchers("/user/join").permitAll()
-	.and().authorizeHttpRequests().antMatchers("/user/**").authenticated().and().httpBasic();
+		
+		
+		http.authorizeHttpRequests()
+		.anyRequest().authenticated()
+		.and().oauth2Login();
 	}
 	
 	@Bean

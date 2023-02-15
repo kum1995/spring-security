@@ -1,0 +1,24 @@
+server:
+  port: 9191
+spring:
+  datasource:
+    password: test
+    url: jdbc:mysql://localhost:3306/spring
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    
+    
+  security:
+    oauth2:
+      client:
+        registration:
+          google :
+            clientId: 749237411473-g80e0j1btr1h9ag7ji41iheicmgh59qr.apps.googleusercontent.com
+            client-secret: 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
+    
+    
+    
+ 
